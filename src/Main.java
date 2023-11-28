@@ -9,7 +9,7 @@ import view.ReversiGUI;
 public class Main {
     public static void main(String[] args) {
         ReversiHexModel model = new ReversiHexModel();
-        model.startGame(7);
+        model.startGame(5);
         ReversiGUI viewPlayer1 = new ReversiGUI(model);
         ReversiGUI viewPlayer2 = new ReversiGUI(model);
         Player player1 = new Player(PlayerTurn.PLAYER1);

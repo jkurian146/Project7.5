@@ -76,16 +76,16 @@ public class ReversiController implements ControllerListener {
             }
         }
         else if (modelEvent.getModelEventType() == ModelEventType.TIE) {
-            // display tie pane to both controllers views
+            this.reversiView.showPopup("Test message Tie");
 
         } else if (modelEvent.getModelEventType() == ModelEventType.ILLEGALMOVE) {
-            // display pane to this controllers view
+            this.reversiView.showPopup("Test message Illegal Move");
 
         } else if (modelEvent.getModelEventType() == ModelEventType.PLAYER1WON) {
-            // display pane to both
+            this.reversiView.showPopup("Test message Player 1");
 
         } else if (modelEvent.getModelEventType() == ModelEventType.PLAYER2WON) {
-            // display pane to both
+            this.reversiView.showPopup("Test message player 2");
 
         }
     }

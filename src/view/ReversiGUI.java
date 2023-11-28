@@ -18,11 +18,6 @@ import controller.*;
 import discs.Disc;
 import discs.DiscColor;
 import model.ReadOnlyReversiModel;
-import model.ReversiHexModel;
-import model.ReversiHexModelAI;
-import player.Player;
-import player.PlayerTurn;
-import strategy.StrategyType;
 
 /**
  * The `ReversiGUI` class represents the view component in a Reversi game.
@@ -154,9 +149,9 @@ public class ReversiGUI extends JFrame implements ReversiView {
           public void keyPressed(KeyEvent e) {
             if (e.getKeyCode() == KeyEvent.VK_SPACE) {
               System.out.println("Spacebar pressed, player wishes to pass");
+              notifyListeners(new PlayerEvent(PlayerEventType.PASS, "", model.currentTurn()));
               if (!(prevX == - 1 && prevY == - 1)) {
                 discSelectorHelper(boardButtons[prevY][prevX], prevX, prevY);
-                notifyListeners(new PlayerEvent(PlayerEventType.PASS, "", model.currentTurn()));
                 prevX = - 1;
                 prevY = - 1;
               }
