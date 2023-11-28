@@ -1,0 +1,14 @@
+package model;
+
+public enum StatusCodes {
+  ILLEGALMOVE,
+  LEGALMOVEMADE,
+  PRESTART,
+  INPROGRESS,
+  PLAYER1WON,
+  PLAYER2WON,
+  STALEMATE,
+  PLAYER1TURN,
+  PLAYER2TURN,
+  PASSED
+}
