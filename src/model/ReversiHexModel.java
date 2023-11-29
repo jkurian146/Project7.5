@@ -268,7 +268,6 @@ public class ReversiHexModel extends BoardUtils implements ReversiModel {
 
   @Override
   public void makeMove(int x, int y) {
-    this.gameNotYetStarted();
     List<Integer> originalCoordinate = new ArrayList<>();
     originalCoordinate.add(x);
     originalCoordinate.add(y);
@@ -397,28 +396,18 @@ public class ReversiHexModel extends BoardUtils implements ReversiModel {
 
     if (twoPassesInARow) {
       this.state = GameState.STALEMATE;
-      notifyListeners(new ModelEvent(ModelEventType.TIE, "The Game Has Ended in a Tie"));
       return true;
     }
     if (currentPlayerLost) {
       this.state = (this.pt == PlayerTurn.PLAYER1) ? GameState.PLAYER2WIN : GameState.PLAYER1WIN;
-      notifyListeners(new ModelEvent(
-              (this.state == GameState.PLAYER1WIN) ? ModelEventType.PLAYER1WON : ModelEventType.PLAYER2WON,
-              (this.state == GameState.PLAYER1WIN) ? "Player 1 Has Won" : "Player 2 Has Won"
-      ));
       return true;
     }
     if (oppositePlayerLost) {
       this.state = (this.pt == PlayerTurn.PLAYER1) ? GameState.PLAYER1WIN : GameState.PLAYER2WIN;
-      notifyListeners(new ModelEvent(
-              (this.state == GameState.PLAYER1WIN) ? ModelEventType.PLAYER1WON : ModelEventType.PLAYER2WON,
-              (this.state == GameState.PLAYER1WIN) ? "Player 1 Has Won" : "Player 2 Has Won"
-      ));
       return true;
     }
     if (noMoves) {
       this.state = GameState.STALEMATE;
-      notifyListeners(new ModelEvent(ModelEventType.TIE, "The Game Has Ended in a Tie"));
       return true;
     }
     return false;

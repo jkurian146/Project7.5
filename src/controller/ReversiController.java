@@ -35,6 +35,7 @@ public class ReversiController implements ControllerListener {
     }
 
     public void listen() {
+
         PlayerTurn controllersPlayerTurn = this.player.getPlayerTurn();
         PlayerTurn modelsPlayerTurn = this.reversiModel.currentTurn();
         ModelEvent modelEvent = this.modelListener.getMostRecentEvent();
@@ -74,19 +75,6 @@ public class ReversiController implements ControllerListener {
             } else {
                 this.reversiView.showPopup(modelEvent.getMessage());
             }
-        }
-        else if (modelEvent.getModelEventType() == ModelEventType.TIE) {
-            this.reversiView.showPopup("Test message Tie");
-
-        } else if (modelEvent.getModelEventType() == ModelEventType.ILLEGALMOVE) {
-            this.reversiView.showPopup("Test message Illegal Move");
-
-        } else if (modelEvent.getModelEventType() == ModelEventType.PLAYER1WON) {
-            this.reversiView.showPopup("Test message Player 1");
-
-        } else if (modelEvent.getModelEventType() == ModelEventType.PLAYER2WON) {
-            this.reversiView.showPopup("Test message player 2");
-
         }
     }
     private PlayerEvent getNextPlayerAction() {
